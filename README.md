@@ -9,9 +9,9 @@ Create docker network for connecting two containers
 
 
 
-docker network create external
-docker network create internal --internal
-docker run -d --name mysql --network internal  -v $(pwd)/init:/docker-entrypoint-initdb.d -v $(pwd)/db:/var/lib/mysql -e MYSQL_DATABASE=app -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql:5
-docker build -t mentor_prog_task1_app:2.0
-docker run -d --name app --network internal -p 5000:5000 -v $(pwd)/app:/app mentor_prog_task1_app:2.0
-docker network connect external app
+docker network create external\
+docker network create internal --internal\
+docker run -d --name mysql --network internal  -v $(pwd)/init:/docker-entrypoint-initdb.d -v $(pwd)/db:/var/lib/mysql -e MYSQL_DATABASE=app -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql:5\
+docker build -t mentor_prog_task1_app:2.0\
+docker run -d --name app --network internal -p 5000:5000 -v $(pwd)/app:/app mentor_prog_task1_app:2.0\
+docker network connect external app\
