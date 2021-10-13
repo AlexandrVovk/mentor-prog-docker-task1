@@ -6,6 +6,7 @@ Create 2 docker images:
 </lo>
 Create docker network for connecting two containers
 
+<h3>Task1 Resolution:</h3>
 docker network create external\
 docker network create internal --internal\
 docker run -d --name mysql --network internal  -v $(pwd)/init:/docker-entrypoint-initdb.d -v $(pwd)/db:/var/lib/mysql -e MYSQL_DATABASE=app -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql:5\
