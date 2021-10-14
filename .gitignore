@@ -1,4 +1,3 @@
 app/__pycache__/
-db-bkp
 db/*
-docker-compose.yml
+db-compose/*
