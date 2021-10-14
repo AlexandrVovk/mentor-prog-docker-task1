@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  mysql:
+      container_name: mysql-compose
+      image: mysql:5
+      environment:
+          - MYSQL_DATABASE=app
+          - MYSQL_ROOT_PASSWORD=my-secret-pw
+      volumes:
+          - ./init:/docker-entrypoint-initdb.d
+          - ./db-compose:/var/lib/mysql
+      networks:
+        - internal_network
+
+  app:
+      container_name: app-compose
+      build: .
+      volumes:
+        - ./app:/app
+      ports:
+        - 80:5000
+      networks:
+        - external_network
+        - internal_network
+
+networks:
+  internal_network:
+    driver: bridge
+    internal: true
+  external_network:
+    driver: bridge
